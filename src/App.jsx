@@ -11,6 +11,7 @@ import Overview  from './pages/teacher/Overview'
 import Application from './pages/teacher/Application'
 import ApplyLayout from './layouts/ApplyLayout'
 import Reset from './pages/auth/Reset'
+import BookForm from './pages/parent-student/BookForm'
 
 
 
@@ -25,12 +26,15 @@ function App() {
       <BrowserRouter>
        <Routes>
 
-        <Route>
-          <Route path='/' element={<RootLayout />} />
+        <Route  >
+          <Route path='/' element={<RootLayout />}/>
           <Route index={true} element={<Home />} />
-          <Route path='Signup' element={<Signup />}/>
-          <Route path='Login' element={<Login />}/>
-          <Route path='Reset' element={<Reset />} />
+          <Route path='signup' element={<Signup />}/>
+          <Route path='login' element={<Login />}/>
+          <Route path='reset' element={<Reset />} />
+          <Route path='bookForm' element={<BookForm />} />
+          
+
         </Route>
 
 
