@@ -12,6 +12,7 @@ import Application from './pages/teacher/Application'
 import ApplyLayout from './layouts/ApplyLayout'
 import Reset from './pages/auth/Reset'
 import BookForm from './pages/parent-student/BookForm'
+import Profiles from './pages/parent-student/Profiles'
 
 
 
@@ -33,7 +34,7 @@ function App() {
           <Route path='login' element={<Login />}/>
           <Route path='reset' element={<Reset />} />
           <Route path='bookForm' element={<BookForm />} />
-          
+          <Route path='profiles' element={<Profiles />} />
 
         </Route>
 

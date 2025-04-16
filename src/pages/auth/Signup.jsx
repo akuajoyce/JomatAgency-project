@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 
 const Signup = () => {
   return (
-    <div className='bg-[#B6CBBD] h-[100vh]'>
+    <div className='bg-[#B6CBBD] min-h-screen'>
       <Navbar />
      <div className='bg-white h-[85vh] w-[60%] ml-70 mt-2 rounded-md'>
 
