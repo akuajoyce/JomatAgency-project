@@ -1,11 +1,17 @@
 import React from "react";
 import { Link } from "react-router";
 import Profile1 from '../../assets/images/Profile1.jpeg';
-import { MapPinIcon} from "lucide-react";
+import { MapPinIcon, ArrowLeft } from "lucide-react";
 
 const SingleProfile = () => {
   return (
     <div className="max-w-4xl mx-auto p-4 md:p-8 text-gray-800 font-sans">
+      <div className="mb-4">
+        <Link to="/" className="flex items-center text-[#6D2323] hover:underline">
+          <ArrowLeft className="mr-2" /> Back
+        </Link>
+      </div>
+
       <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
         <div className="md:flex">
           
@@ -20,7 +26,7 @@ const SingleProfile = () => {
 
             <div className="mt-6 text-sm space-y-2">
               <div className="flex items-center justify-center gap-2">
-               <MapPinIcon className="text-[#6D2323]"/>
+                <MapPinIcon className="text-[#6D2323]" />
                 <span className="text-white">Lapaz, Accra</span>
               </div>
               <Link
@@ -61,9 +67,9 @@ const SingleProfile = () => {
                 TEACHING PHILOSOPY
               </h2>
               <p className="text-sm leading-relaxed">
-                    I believe every student is unique and has their learning style,interest and needs.Therefore,I always ensure lessons are designed to meet learning needs.Create a learning environment where students feel safe,supported,and empowered to take risk,learn from their mistakes,and develop a love for learning.
+                I believe every student is unique and has their learning style,interest and needs.Therefore,I always ensure lessons are designed to meet learning needs.Create a learning environment where students feel safe,supported,and empowered to take risk,learn from their mistakes,and develop a love for learning.
               </p>
-               </section>
+            </section>
           </div>
         </div>
       </div>
