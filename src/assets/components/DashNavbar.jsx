@@ -1,26 +1,34 @@
-import { BellIcon, SearchIcon} from "lucide-react";
+import { BellIcon, SearchIcon } from "lucide-react";
 import React from "react";
-import Profile from "../../assets/images/Profile.jpg";
+import Profile1 from "../../assets/images/Profile1.jpeg";
 
 const DashNavbar = () => {
   return (
     <div className="w-full">
-      
-      <nav className=' w-full flex items-center justify-between border-b border-gray-300 h-20 '>
+      <nav className="w-full flex flex-col sm:flex-row items-center justify-between border-b border-gray-300 h-auto sm:h-20 px-4 sm:px-10 py-4 bg-white gap-4">
+        {/* Search Box */}
+        <div className="flex items-center bg-[#B6CBBD] px-4 py-2 rounded-full w-full sm:w-auto">
+          <input
+            type="text"
+            placeholder="Search for what you need ..."
+            className="bg-transparent placeholder-white text-white w-full sm:w-64 focus:outline-none"
+          />
+          <SearchIcon className="text-[#6D2323] ml-2" />
+        </div>
 
-      <div className=' flex items-center space-x-4 bg-[#B6CBBD] ml-10 px-6 rounded-full'>
-        <input type=''
-        placeholder='Search for what you need ...' className='px-25 py-4 text-white' />
-        <SearchIcon className='text-[#6D2323]'/>
-      </div>
+        {/* Notification & Profile */}
+        <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
+          <BellIcon className="text-[#6D2323] border-2 border-gray-300 rounded-full p-1 w-8 h-8" />
 
-      <div className=' flex items-center mr-10 gap-4'>
-        <BellIcon className='text-[#6D2323] border-2 border-gray-300 rounded-full' />
-       <div className='flex items-center border-1 border-gray-500 rounded-full px-10 py-1 space-x-1 bg-gray-400'>
-       <img src={Profile} alt="" className='w-10 h-10 rounded-full border-2 border-[#6D2323] text-wrap' />
-       <p className='font-light text-white'>Matt Dink</p>
-       </div>
-      </div>
+          <div className="flex items-center gap-2 bg-[#6D2323] px-4 py-1 rounded-full">
+            <img
+              src={Profile1}
+              alt="Profile"
+              className="w-10 h-10 rounded-full border-2 border-[#B6CBBD]"
+            />
+            <p className="text-[#B6CBBD] text-sm sm:text-base">Matt Dink</p>
+          </div>
+        </div>
       </nav>
     </div>
   );
