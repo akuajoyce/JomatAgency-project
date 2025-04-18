@@ -1,7 +1,8 @@
-import React from 'react'
-import Navbar from '../../assets/components/Navbar'
-import Footer from '../../assets/components/Footer'
-import { Link } from 'react-router'
+import React from 'react';
+import Navbar from '../../assets/components/Navbar';
+import Footer from '../../assets/components/Footer';
+import { Link } from 'react-router';
+import { ArrowLeft } from 'lucide-react';
 
 const Login = () => {
   return (
@@ -10,6 +11,14 @@ const Login = () => {
       
       <div className="flex justify-center items-center flex-grow px-4 mt-4">
         <div className="bg-white w-full max-w-xl rounded-md p-6 shadow-md">
+          
+          {/* Back Navigation */}
+          <div className='mb-4'>
+            <Link to='/' className='flex items-center text-[#6D2323] hover:underline'>
+              <ArrowLeft className='mr-2' /> Back
+            </Link>
+          </div>
+
           <div className="mb-6">
             <h1 className="text-2xl font-bold text-[#6D2323]">Login</h1>
             <p className="font-light">Welcome</p>
@@ -55,7 +64,7 @@ const Login = () => {
 
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

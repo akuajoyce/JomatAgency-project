@@ -1,7 +1,7 @@
 import React from 'react'
 import ProfileCard from '../../assets/components/ProfileCard'
 import Navbar from '../../assets/components/Navbar'
-import Profile from '../../assets/images/Profile.jpg'
+import Profile1 from '../../assets/images/Profile1.jpeg'
 import Profile2 from '../../assets/images/Profile2.jpg'
 import Profile3 from '../../assets/images/Profile3.jpg'
 import Profile4 from '../../assets/images/Profile4.jpg'
@@ -14,7 +14,7 @@ const teachersProfile =[
         name: 'Matthew Dinko',
         title: 'English Language Teacher',
         location: 'Lapaz,Accra',
-        imageUrl: Profile
+        imageUrl: Profile1
     },
     {
         name: 'Kennedy Zongbil',

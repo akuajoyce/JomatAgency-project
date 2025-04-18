@@ -1,13 +1,21 @@
-import React from 'react'
-import Navbar from '../../assets/components/Navbar'
-import Footer from '../../assets/components/Footer'
-import { Link } from 'react-router'
+import React from 'react';
+import Navbar from '../../assets/components/Navbar';
+import Footer from '../../assets/components/Footer';
+import { Link } from 'react-router';
+import { ArrowLeft } from 'lucide-react';
 
 const Signup = () => {
   return (
     <div className='bg-[#B6CBBD] flex flex-col'>
       <Navbar />
       <div className='bg-white w-full max-w-4xl mx-auto mt-4 p-6 rounded-md shadow-md flex-1'>
+
+        {/* Back Navigation */}
+        <div className='mb-4'>
+          <Link to='/' className='flex items-center text-[#6D2323] hover:underline'>
+            <ArrowLeft className='mr-2' /> Back
+          </Link>
+        </div>
 
         <div className='text-center mb-6'>
           <h1 className='text-3xl sm:text-4xl font-bold text-[#6D2323]'>Create An Account</h1>
@@ -81,7 +89,7 @@ const Signup = () => {
       </div>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;
