@@ -6,7 +6,8 @@ import newLogo from '../images/newLogo.png'
 
 const Sidebar = () => {
   return (
-    <aside className='w-64 bg-[#B6CBBD] text-white h-screen p-6 space-y-8 '>
+    <div>
+     <aside className='w-64 bg-[#B6CBBD] text-white h-screen p-6 space-y-8 '>
         <img src={newLogo} alt="" className='h-30 w-30 ml-6 rounded-sm hover:scale-105 cursor-pointer'/>
         <h2 className='ml-6 text-[#6D2323] font-bold'>Teacher Panel</h2>
         <nav>
@@ -51,6 +52,7 @@ const Sidebar = () => {
             </Link>
         </nav>
     </aside>
+    </div>
   )
 }
 

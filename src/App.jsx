@@ -13,6 +13,8 @@ import ApplyLayout from './layouts/ApplyLayout'
 import Reset from './pages/auth/Reset'
 import BookForm from './pages/parent-student/BookForm'
 import Profiles from './pages/parent-student/Profiles'
+import SingleProfile from './pages/parent-student/SingleProfile'
+
 
 
 
@@ -35,6 +37,7 @@ function App() {
           <Route path='reset' element={<Reset />} />
           <Route path='bookForm' element={<BookForm />} />
           <Route path='profiles' element={<Profiles />} />
+          <Route path='singleProfile' element={<SingleProfile />} />
 
         </Route>
 
