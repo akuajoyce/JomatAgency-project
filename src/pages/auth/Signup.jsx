@@ -4,16 +4,18 @@ import Footer from '../../assets/components/Footer';
 import { Link } from 'react-router';
 import { ArrowLeft } from 'lucide-react';
 
+
 const Signup = () => {
   return (
     <div className='bg-[#B6CBBD] flex flex-col'>
       <Navbar />
       <div className='bg-white w-full max-w-4xl mx-auto mt-4 p-6 rounded-md shadow-md flex-1'>
 
-        {/* Back Navigation */}
+        {/* Back button */}
         <div className='mb-4'>
-          <Link to='/' className='flex items-center text-[#6D2323] hover:underline'>
-            <ArrowLeft className='mr-2' /> Back
+          <Link to='/' className='flex items-center text-[#6D2323] hover:underline w-fit'>
+            <ArrowLeft className='mr-2' />
+            Back
           </Link>
         </div>
 
