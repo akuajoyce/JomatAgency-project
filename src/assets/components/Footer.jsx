@@ -9,7 +9,7 @@ const Footer = () => {
         
         
         <div className="flex flex-col items-center md:items-start space-y-3">
-          <img src={newLogo} alt="Logo" className="h-16 w-auto" />
+          <img src={newLogo} alt="Logo" className="h-20 w-auto" />
           <div className="flex text-[rgb(109,35,35)] space-x-4 text-2xl cursor-pointer">
             <FacebookIcon className='h-5 w-5' />
             <XIcon  className='h-5 w-5'/>
@@ -33,7 +33,7 @@ const Footer = () => {
           <input
             type="email"
             placeholder="Enter a valid email"
-            className="bg-[#B6CBBD] text-white px-4 py-2 rounded-md font-mono w-full sm:w-2/3 md:w-full"
+            className="bg-[#B6CBBD] text-black px-4 py-2 rounded-md font-bold w-full sm:w-2/3 md:w-full"
           />
           <button className="bg-[#6D2323] text-white py-3 px-6 rounded-md cursor-pointer font-mono w-full sm:w-2/3 md:w-auto">
             Submit
