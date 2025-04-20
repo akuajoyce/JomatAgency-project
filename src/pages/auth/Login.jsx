@@ -1,10 +1,25 @@
 import React from 'react';
 import Navbar from '../../assets/components/Navbar';
 import Footer from '../../assets/components/Footer';
-import { Link } from 'react-router';
+import { Link, useNavigate, useSubmit } from 'react-router';
 import { ArrowLeft } from 'lucide-react';
+import { useState } from 'react';
+
+
 
 const Login = () => {
+  // const navigate = useNavigate();
+  // const [role , setRole] = useState('');
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   if (role === 'teacher') {
+  //     navigate('/teacher');
+  //   }  else if (role === 'parent-student') {
+  //     navigate('/profiles')
+  //   }
+  // };
   return (
     <div className="bg-[#B6CBBD] min-h-screen flex flex-col">
       <Navbar />
@@ -12,7 +27,7 @@ const Login = () => {
       <div className="flex justify-center items-center flex-grow px-4 mt-4">
         <div className="bg-white w-full max-w-xl rounded-md p-6 shadow-md">
           
-          {/* Back Navigation */}
+         
           <div className='mb-4'>
             <Link to='/' className='flex items-center text-[#6D2323] hover:underline'>
               <ArrowLeft className='mr-2' /> Back
@@ -24,7 +39,7 @@ const Login = () => {
             <p className="font-light">Welcome</p>
           </div>
 
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:justify-end sm:items-center text-sm sm:text-base">
               <p className="text-[#6D2323] sm:mr-2">Don't Have an Account?</p>
               <Link to="/Signup" className="text-[#6D2323] hover:underline">Sign Up</Link>
