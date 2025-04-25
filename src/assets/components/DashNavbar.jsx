@@ -5,7 +5,7 @@ import Profile1 from "../../assets/images/Profile1.jpeg";
 const DashNavbar = () => {
   return (
     <div className="w-full">
-      <nav className="w-full flex flex-col sm:flex-row items-center justify-between border-b border-gray-300 h-auto sm:h-20 px-4 sm:px-10 py-4 bg-white gap-4">
+      <nav className="w-full flex flex-col sm:flex-row items-center justify-between border-b border-gray-300 h-auto sm:h-20 px-2 sm:px-10 py-2 bg-white gap-4">
         {/* Search Box */}
         <div className="flex items-center bg-[#B6CBBD] px-4 py-2 rounded-full w-full sm:w-auto">
           <input
@@ -20,7 +20,7 @@ const DashNavbar = () => {
         <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
           <BellIcon className="text-[#6D2323] border-2 border-gray-300 rounded-full p-1 w-8 h-8" />
 
-          <div className="flex items-center gap-2 bg-[#6D2323] px-4 py-1 rounded-full">
+          <div className="flex items-center gap-2 bg-[#6D2323] px-3 py-1 rounded-full">
             <img
               src={Profile1}
               alt="Profile"

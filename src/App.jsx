@@ -20,6 +20,7 @@ import SingleProfile from './pages/parent-student/SingleProfile'
 
 
 
+
 function App() {
  
 
@@ -37,7 +38,7 @@ function App() {
           <Route path='reset' element={<Reset />} />
           <Route path='bookForm' element={<BookForm />} />
           <Route path='profiles' element={<Profiles />} />
-          <Route path='singleProfile' element={<SingleProfile />} />
+          <Route path='profile/:id' element={<SingleProfile />} />
 
         </Route>
 

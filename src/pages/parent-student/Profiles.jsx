@@ -11,24 +11,28 @@ import Profile6 from '../../assets/images/Profile6.jpg'
 
 const teachersProfile =[
     {
+        id: 1,
         name: 'Matthew Dinko',
         title: 'English Language Teacher',
         location: 'Lapaz,Accra',
         imageUrl: Profile1
     },
     {
+        id: 2,
         name: 'Kennedy Zongbil',
         title: 'Mathematics/Physics Teacher',
         location: 'Cape Coast',
         imageUrl: Profile2 
     },
     {
+        id: 3,
         name: 'Joyce Abbey',
         title: 'Literature-in-English Teacher',
         location: 'New Site,Sunyani',
         imageUrl: Profile4
     },
     {
+        id: 4,
         name: 'Daniel Danquah',
         title: 'Pre-School Teacher',
         location: 'Kwadaso,Kumasi',
@@ -36,12 +40,14 @@ const teachersProfile =[
           
     },
     {
+        id: 5,
         name: 'Dorcas Gyedu',
         title: 'Integrated Science Teacher',
         location: 'Chapel Square,Kasoa',
         imageUrl: Profile5 
     },
     {
+        id: 6,
         name: 'Selina Boafo',
         title: 'Elective Mathematics Teacher',
         location: 'Container,Tamale',
@@ -55,6 +61,7 @@ const Profiles = () => {
         {teachersProfile.map((teacher, index) => (
          <ProfileCard
          key={index}
+         id={teacher.id}
          name={teacher.name} 
          title={teacher.title}
          location={teacher.location}

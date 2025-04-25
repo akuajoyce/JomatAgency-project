@@ -1,25 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../../assets/components/Navbar';
 import Footer from '../../assets/components/Footer';
-import { Link, useNavigate, useSubmit } from 'react-router';
+import { Link, useNavigate } from 'react-router'; 
 import { ArrowLeft } from 'lucide-react';
-import { useState } from 'react';
-
-
+import { apiLogin } from '../../sevices/authServices'; 
 
 const Login = () => {
-  // const navigate = useNavigate();
-  // const [role , setRole] = useState('');
+  const navigate = useNavigate();
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  //   if (role === 'teacher') {
-  //     navigate('/teacher');
-  //   }  else if (role === 'parent-student') {
-  //     navigate('/profiles')
-  //   }
-  // };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await apiLogin({ email, password });
+      const { token, role, teacherId } = res.data;
+
+      localStorage.setItem("accessToken", token);
+      alert("Login successful!");
+
+      if (role === 'teacher') {
+        localStorage.setItem("teacherId", teacherId);
+        navigate(`/dashboard/${teacherId}`);
+      } else if (role === 'parent-student') {
+        navigate('/profiles');
+      } else {
+        navigate('/');
+      }
+    } catch (err) {
+      alert("Login failed. Please check your credentials.");
+      console.error(err);
+    }
+  };
+
   return (
     <div className="bg-[#B6CBBD] min-h-screen flex flex-col">
       <Navbar />
@@ -27,7 +41,6 @@ const Login = () => {
       <div className="flex justify-center items-center flex-grow px-4 mt-4">
         <div className="bg-white w-full max-w-xl rounded-md p-6 shadow-md">
           
-         
           <div className='mb-4'>
             <Link to='/' className='flex items-center text-[#6D2323] hover:underline'>
               <ArrowLeft className='mr-2' /> Back
@@ -39,7 +52,7 @@ const Login = () => {
             <p className="font-light">Welcome</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div className="flex flex-col sm:flex-row sm:justify-end sm:items-center text-sm sm:text-base">
               <p className="text-[#6D2323] sm:mr-2">Don't Have an Account?</p>
               <Link to="/Signup" className="text-[#6D2323] hover:underline">Sign Up</Link>
@@ -50,6 +63,9 @@ const Login = () => {
                 type="email"
                 placeholder="Email mail@site.com"
                 className="bg-[#B6CBBD] w-full px-4 py-3 rounded-sm"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
 
@@ -58,6 +74,9 @@ const Login = () => {
                 type="password"
                 placeholder="Password"
                 className="bg-[#B6CBBD] w-full px-4 py-3 rounded-sm"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
 
