@@ -11,8 +11,7 @@ const DashboardLayout = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen">
-      
+    <div className="flex flex-col md:flex-row min-h-screen h-full">
       <button
         className="md:hidden p-4 text-white bg-[#6D2323]"
         onClick={toggleSidebar}
@@ -20,13 +19,11 @@ const DashboardLayout = () => {
         ☰
       </button>
 
-      
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
 
-      
-      <div className="flex-1">
+      <div className="flex-1 flex flex-col h-full">
         <DashNavbar />
-        <main className="flex-1 p-4">
+        <main className="flex-1 p-4 overflow-y-auto">
           <Outlet />
         </main>
       </div>
