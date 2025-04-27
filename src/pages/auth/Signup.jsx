@@ -40,7 +40,7 @@ const Signup = () => {
 
       if (formData.role === "teacher") {
         navigate("/teacher/Application");
-      } else if (formData.role === "parent-student") {
+      } else if (formData.role === "learner") {
         navigate("/profiles");
       }
     } catch (error) {
@@ -145,7 +145,8 @@ const Signup = () => {
             >
               <option value="">Select Option</option>
               <option value="teacher">Teacher</option>
-              <option value="parent-student">Parent/Student</option>
+              {/* <option value="parent-student">Parent/student</option> */}
+              <option value="learner">Learner</option>
               
             </select>
           </div>

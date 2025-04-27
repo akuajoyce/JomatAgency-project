@@ -22,8 +22,8 @@ const Login = () => {
 
       if (role === 'teacher') {
         localStorage.setItem("teacherId", teacherId);
-        navigate(`/dashboard/${teacherId}`);
-      } else if (role === 'parent-student') {
+        navigate(`/teacher/${teacherId}`);
+      } else if (role === 'learner') {
         navigate('/profiles');
       } else {
         navigate('/');
