@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router'; 
 import { ArrowLeft } from 'lucide-react';
-import { submitApplication } from '../../sevices/formServices';
+import { apiApplication } from '../../sevices/formServices';
 
 const Application = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
-    phone: '',
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
     location: '',
     specialization: '',
-    startDate: '',
+    earliestPossibleStartDate: '',
     coverLetter: '',
-    cv: null,
-    document: null,
-    profileImage: null, // ✅ Added here
+    uploadCv: null,
+    uploadProfilePicture: null,
+    anyOtherDocumentToUpload: null,
   });
 
   const handleChange = (e) => {
@@ -40,18 +41,19 @@ const Application = () => {
     });
 
     try {
-      await submitApplication(payload);
+      await apiApplication(payload);
       alert('Application submitted successfully ✅');
       setFormData({
-        fullName: '',
-        phone: '',
+        firstName: '',
+        lastName: '',
+        phoneNumber: '',
         location: '',
         specialization: '',
-        startDate: '',
+        earliestPossibleStartDate: '',
         coverLetter: '',
-        cv: null,
-        document: null,
-        profileImage: null,
+        uploadCv: null,
+        uploadProfilePicture: null,
+        anyOtherDocumentToUpload: null,
       });
     } catch (error) {
       console.error('Application submission failed:', error);
@@ -75,17 +77,34 @@ const Application = () => {
         </div>
 
         <form onSubmit={handleSubmit}>
+          {/* Input Fields */}
           <div className="mt-4">
             <label className="text-gray-700 font-medium">
-              Full Name <span className="text-red-500">*</span>
+              First Name <span className="text-red-500">*</span>
             </label>
             <input
-              name="fullName"
-              value={formData.fullName}
+              name="firstName"
+              value={formData.firstName}
               onChange={handleChange}
               type="text"
-              placeholder="Enter your full name"
+              placeholder="Enter your first name"
               className="border border-[#6D2323] rounded-sm px-4 py-2 w-full"
+              required
+            />
+          </div>
+
+          <div className="mt-4">
+            <label className="text-gray-700 font-medium">
+              Last Name <span className="text-red-500">*</span>
+            </label>
+            <input
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              type="text"
+              placeholder="Enter your last name"
+              className="border border-[#6D2323] rounded-sm px-4 py-2 w-full"
+              required
             />
           </div>
 
@@ -95,12 +114,13 @@ const Application = () => {
                 Phone Number <span className="text-red-500">*</span>
               </label>
               <input
-                name="phone"
-                value={formData.phone}
+                name="phoneNumber"
+                value={formData.phoneNumber}
                 onChange={handleChange}
                 type="tel"
                 placeholder="(000) 000 0000"
                 className="border border-[#6D2323] rounded-sm px-4 py-2"
+                required
               />
             </div>
             <div className="flex flex-col w-full">
@@ -113,6 +133,7 @@ const Application = () => {
                 onChange={handleChange}
                 type="text"
                 className="border border-[#6D2323] rounded-sm px-4 py-2"
+                required
               />
             </div>
           </div>
@@ -126,8 +147,8 @@ const Application = () => {
               className="border border-[#6D2323] rounded-sm px-4 py-2 w-full"
             />
             <input
-              name="startDate"
-              value={formData.startDate}
+              name="earliestPossibleStartDate"
+              value={formData.earliestPossibleStartDate}
               onChange={handleChange}
               type="date"
               className="border border-[#6D2323] rounded-sm px-4 py-2 w-full"
@@ -145,44 +166,58 @@ const Application = () => {
               rows="4"
               className="border border-[#6D2323] rounded-sm px-4 py-2 w-full"
               placeholder="Write a brief cover letter..."
+              required
             />
           </div>
 
           <div className="mt-4">
-            <label className="text-gray-700 font-medium">Upload CV <span className="text-red-500">*</span></label>
+            <label className="text-gray-700 font-medium">
+              Upload CV <span className="text-red-500">*</span>
+            </label>
             <input
-              name="cv"
+              name="uploadCv"
               type="file"
               accept=".pdf,.doc,.docx"
               onChange={handleChange}
               className="border border-[#6D2323] rounded-sm px-4 py-2 w-full"
+              required
             />
           </div>
 
           <div className="mt-4">
-            <label className="text-gray-700 font-medium">Upload Other Document</label>
+            <label className="text-gray-700 font-medium">
+              Upload Profile Picture <span className="text-red-500">*</span>
+            </label>
             <input
-              name="document"
-              type="file"
-              onChange={handleChange}
-              className="border border-[#6D2323] rounded-sm px-4 py-2 w-full"
-            />
-          </div>
-
-          {/* ✅ New Profile Image Upload */}
-          <div className="mt-4">
-            <label className="text-gray-700 font-medium">Upload Profile Image</label>
-            <input
-              name="profileImage"
+              name="uploadProfilePicture"
               type="file"
               accept="image/*"
               onChange={handleChange}
               className="border border-[#6D2323] rounded-sm px-4 py-2 w-full"
+              required
             />
           </div>
 
-          <div className="bg-[#6D2323] flex justify-center mt-6 w-full md:w-60 px-10 py-2 rounded-sm text-white cursor-pointer mx-auto">
-            <button type="submit">Submit Application</button>
+          <div className="mt-4">
+            <label className="text-gray-700 font-medium">
+              Any Other Document to Upload?
+            </label>
+            <input
+              name="anyOtherDocumentToUpload"
+              type="file"
+              onChange={handleChange}
+              className="border border-[#6D2323] rounded-sm px-4 py-2 w-full"
+            />
+          </div>
+
+          {/* ✅ Fixed Button */}
+          <div className="flex justify-center mt-6">
+            <button
+              type="submit"
+              className="bg-[#6D2323] w-full md:w-60 px-10 py-2 rounded-sm text-white cursor-pointer"
+            >
+              Submit Application
+            </button>
           </div>
         </form>
       </div>

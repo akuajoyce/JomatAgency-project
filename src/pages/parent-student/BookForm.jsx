@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router'; 
 import { ArrowLeft } from 'lucide-react';
-import { submitBooking} from '../../sevices/formServices'; 
+import { apiBookForm} from '../../sevices/formServices'; 
 
 const BookForm = () => {
   const [formData, setFormData] = useState({
@@ -32,23 +32,24 @@ const BookForm = () => {
     e.preventDefault();
 
     try {
-      await submitBooking(formData);
+      await apiBookForm(formData);
       alert('Booking submitted successfully!');
       // optionally reset form
       setFormData({
         firstName: '',
         lastName: '',
         email: '',
-        phone: '',
-        preferredTeacher: '',
-        hoursPerWeek: '',
-        bookingFor: '',
+        phoneNumber: '',
+        location: '',
         subject: '',
-        learnerLevel: '',
+        preferredTeacher: '',
+        preferredHoursPerWeek: '',
+        bookingFor: '',
+        levelOfLeaner: '',
         numberOfLearners: '',
         paymentPlan: '',
-        paymentMethod: '',
-        location: ''
+        paymentMethod: ''
+        
       });
     } catch (error) {
       console.error('Booking failed:', error);
