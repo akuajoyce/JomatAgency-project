@@ -31,5 +31,5 @@ export const apiLogin = async ({ email, password }) => {
  * @param {Object} payload - { email, newPassword }
  */
 export const apiResetPassword = async ({ email,password,confirmPassword }) => {
-  return apiClient.post("/user/reset-password", { email, newPassword });
+  return apiClient.post("/user/reset-password", { email,password,confirmPassword });
 };

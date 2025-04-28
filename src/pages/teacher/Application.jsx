@@ -40,6 +40,11 @@ const Application = () => {
       payload.append(key, value);
     });
 
+    // Better payload logging
+    for (let pair of payload.entries()) {
+      console.log(`${pair[0]}:`, pair[1]);
+    }
+
     try {
       await apiApplication(payload);
       alert('Application submitted successfully ✅');
@@ -56,8 +61,36 @@ const Application = () => {
         anyOtherDocumentToUpload: null,
       });
     } catch (error) {
-      console.error('Application submission failed:', error);
-      alert('Something went wrong ❌');
+      console.error('Submission error:', error);
+
+      if (error.response) {
+        const { status, data } = error.response;
+        console.error('Server responded with:', status, data);
+
+        if (data && typeof data === 'object') {
+          const errorMessages = Object.entries(data)
+            .map(([field, messages]) => {
+              if (Array.isArray(messages)) {
+                return `${field}: ${messages.join(', ')}`;
+              } else {
+                return `${field}: ${messages}`;
+              }
+            })
+            .join('\n');
+
+          alert(`Submission failed:\n${errorMessages}`);
+        } else if (typeof data === 'string') {
+          alert(`Submission failed: ${data}`);
+        } else {
+          alert('Submission failed with an unknown server error.');
+        }
+      } else if (error.request) {
+        console.error('No response received:', error.request);
+        alert('No response from server. Please try again later.');
+      } else {
+        console.error('Unexpected error:', error.message);
+        alert('Something went wrong. Please try again ❌');
+      }
     }
   };
 
@@ -210,7 +243,7 @@ const Application = () => {
             />
           </div>
 
-          {/* ✅ Fixed Button */}
+          {/* Submit Button */}
           <div className="flex justify-center mt-6">
             <button
               type="submit"

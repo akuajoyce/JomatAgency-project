@@ -1,28 +1,85 @@
-import { apiClient } from './config';
+import { apiClient } from "./config";
+
+
 
 export const apiApplication = async (formData) => {
-  const data = new FormData();
-  data.append("firstName", formData.firstName);
-  data.append("lastName", formData.lastName);
-  data.append("email", formData.email);
-  data.append("phoneNumber", formData.phoneNumber);
-  data.append("location", formData.location);
-  data.append("specialization", formData.specialization);
-  data.append("earliestPossibleStartDate", formData.earliestPossibleStartDate);
-  data.append("coverLetter", formData.coverLetter);
-  data.append("uploadCv", formData.uploadCv);
-  data.append("uploadProfilePicture", formData.uploadProfilePicture);
+  try {
+    // Transform field names to match backend expectations
+    const transformedData = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      phoneNumber: formData.phoneNumber,
+      location: formData.location,
+      specialization: formData.specialization,
+      earliestPossibleStartDate: formData.earliestPossibleStartDate,
+      coverLetter: formData.coverletter || formData.coverLetter, // Handle both cases
+      uploadCv: formData.uploadCv,
+      uploadProfilePicture: formData.uploadProfilePicture,
+      anyOtherDocumentToUpload: formData.anyOtherDocumentTolUpload || formData.anyOtherDocumentToUpload
+    };
 
-  // ✅ Optional field
-  if (formData.anyOtherDocumentToUpload) {
-    data.append("anyOtherDocumentToUpload", formData.anyOtherDocumentToUpload);
+    // Validate required fields
+    const requiredFields = {
+      firstName: "First name is required",
+      lastName: "Last name is required",
+      // ... other fields ...
+    };
+
+    Object.entries(requiredFields).forEach(([field, message]) => {
+      if (!transformedData[field] || 
+          (typeof transformedData[field] === 'string' && !transformedData[field].trim())) {
+        throw new Error(message);
+      }
+    });
+
+    const data = new FormData();
+    Object.entries(transformedData).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) {
+        data.append(key, value);
+      }
+    });
+
+    const response = await apiClient.post("/application/form", data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error("Full error details:", error);
+    throw new Error(error.response?.data?.message || error.message);
   }
-
-  return apiClient.post("/application/form", data);
 };
 
+// 2. For STUDENT BOOKING FORM (text-only)
+export const apiBookForm = async (formData) => {
+  // First validate required fields
+  const requiredFields = [
+    "firstName",
+    "lastName",
+    "email",
+    "phoneNumber",
+    "location",
+    "subject",
+    "bookingFor",
+    "numberOfLearners",
+    "preferredHoursPerWeek",
+    "preferredTeacher",
+    "levelOfLearner",
+    "paymentPlan",
+    "paymentMethod",
+  ];
 
+  const missingFields = requiredFields.filter((field) => !formData[field]);
+  if (missingFields.length > 0) {
+    throw new Error(`Missing required fields: ${missingFields.join(", ")}`);
+  }
 
-
-export const apiBookForm = (formData) =>
-  apiClient.post('/booking/form', formData);
+  return apiClient.post("/booking/form", formData, {
+    headers: {
+      "Content-Type": "application/json", // Optimal for text data
+    },
+  });
+};
