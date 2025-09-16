@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
 import {
-  HomeIcon, GraduationCapIcon, BookIcon,
-  CalendarDaysIcon, FolderIcon, MessageCircleHeartIcon,
-  UserIcon, LockIcon
+  HomeIcon, CalendarDaysIcon, MessageCircleHeartIcon,
+  UserIcon, LockIcon, DollarSignIcon, ClockIcon, ListOrderedIcon
 } from 'lucide-react'
 import newLogo from '../images/newLogo.png'
 
@@ -26,20 +25,16 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           <HomeIcon /> <p>Dashboard</p>
         </Link>
 
-        <Link to="/my students" onClick={toggleSidebar} className="flex items-center gap-4 ml-6 text-[#6D2323]">
-          <GraduationCapIcon /> <p>My Students</p>
+        <Link to="/schedule" onClick={toggleSidebar} className="flex items-center gap-4 ml-6 text-[#6D2323]">
+          <ListOrderedIcon /> <p>Schedule</p>
         </Link>
 
-        <Link to="/lesson plan" onClick={toggleSidebar} className="flex items-center gap-4 ml-6 text-[#6D2323]">
-          <BookIcon /> <p>Lesson Plan</p>
+        <Link to="/earnings" onClick={toggleSidebar} className="flex items-center gap-4 ml-6 text-[#6D2323]">
+          <DollarSignIcon /> <p>Earnings</p>
         </Link>
 
-        <Link to="/bookings" onClick={toggleSidebar} className="flex items-center gap-4 ml-6 text-[#6D2323]">
-          <CalendarDaysIcon /> <p>Bookings</p>
-        </Link>
-
-        <Link to="/resources" onClick={toggleSidebar} className="flex items-center gap-4 ml-6 text-[#6D2323]">
-          <FolderIcon /> <p>Resources</p>
+        <Link to="/availability" onClick={toggleSidebar} className="flex items-center gap-4 ml-6 text-[#6D2323]">
+          <ClockIcon /> <p>Availability</p>
         </Link>
 
         <Link to="/messages" onClick={toggleSidebar} className="flex items-center gap-4 ml-6 text-[#6D2323]">
